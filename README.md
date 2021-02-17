@@ -12,3 +12,5 @@ incorrect answer
 incorrect answer
 
 do that as many times as nessesary. I will improve the functionaly when we get electricity again
+
+## Make Sure to Delete the example files before use
