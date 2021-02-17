@@ -55,7 +55,7 @@ def main():
         
         else:
             catnumber = userInput
-            qnum = randint(0,len(categories[catnumber].questions))
+            qnum = randint(0,len(categories[catnumber].questions)-1)
             print(categories[catnumber].questions[qnum].questionText)
             print(categories[catnumber].questions[qnum].answer)
             print(categories[catnumber].questions[qnum].dud1)
