@@ -49,18 +49,27 @@ def main():
         userInput = int(input(">> "))
         if userInput == -1:
             for index, cat in enumerate(categories):
-                # None is the equivalent of null in python because Python likes to be special
-                if cat != None:
-                    print(index,"-",cat.categoryTitle)
+                print(index,"-",cat.categoryTitle)
         
         else:
             catnumber = userInput
             qnum = randint(0,len(categories[catnumber].questions)-1)
             print(categories[catnumber].questions[qnum].questionText)
-            print(categories[catnumber].questions[qnum].answer)
-            print(categories[catnumber].questions[qnum].dud1)
-            print(categories[catnumber].questions[qnum].dud2)
-            print(categories[catnumber].questions[qnum].dud3)
+            order = [1,2,3,4]
+
+            for _ in range(4):
+                randomABCDindex = randint(0,len(order)-1)
+                randomABCD = order[randomABCDindex]
+                if randomABCD == 1:
+                    print(categories[catnumber].questions[qnum].answer, "(CORRECT ANSWER)")
+                elif randomABCD == 2:
+                    print(categories[catnumber].questions[qnum].dud1)
+                elif randomABCD == 3:
+                    print(categories[catnumber].questions[qnum].dud2)
+                else:
+                    print(categories[catnumber].questions[qnum].dud3)
+                order.pop(randomABCDindex)
+
             categories[catnumber].questions.pop(qnum)  
 
 if __name__ == "__main__":
