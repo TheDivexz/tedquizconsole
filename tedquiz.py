@@ -1,3 +1,9 @@
+#
+#
+# FILE IS BEING REWORKED. THIS IS THE OUTDATED VERSION 0.1
+#
+#
+
 import os
 import sys
 from random import seed

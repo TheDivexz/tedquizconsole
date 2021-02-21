@@ -1,16 +1,10 @@
-anotherone
-aannnnnnoottahhha
-s
-d
-f
-f
-words words works
-kinda
-ted
-5
-2
-Once more come on you people
-dhooom
-just 
-take
-it
+# should indicate comments
+question = {
+    id = 0
+    text = "What is the correct answer?"
+    answer = "a"
+    incorrect = "b", "c", "d"
+    category = "history", "politics"
+    num_asked = 0
+    num_correct = 0
+}
