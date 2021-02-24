@@ -1,8 +1,0 @@
-# should indicate comments
-question = {
-    id = 0
-    text = "What is the correct answer?"
-    answer = "a"
-    incorrect = "b", "c", "d"
-    category = "history", "politics"
-}

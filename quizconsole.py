@@ -55,7 +55,7 @@ def main():
     saveindex = 0
     # So there is at least 1 category to avoid errors
     print("Assigning Questions...")
-    categories.append(questions[0].categories[0])
+    #categories = questions[0].categories
     for index, q in enumerate(questions):
         for cat in q.categories:
             catExists = False

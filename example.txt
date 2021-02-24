@@ -1,0 +1,24 @@
+# should indicate comments
+question = {
+    id = 0
+    text = "What is the correct answer?"
+    answer = "a"
+    incorrect = "b", "c", "d"
+    category = "history", "politics"
+}
+question = {
+    id = 1
+    text = "True False example"
+    answer = "Trueeeeeeeee"
+    incorrect = "Fake News"
+    category = "history"
+}
+question = {
+    id = 2
+    text = "Lots of choices oh me oh my"
+    answer = "On god"
+    incorrect = "Fake"
+    incorrect = "False"
+    incorrect = "ionno"
+    category = "politics"
+}

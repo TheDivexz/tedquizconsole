@@ -28,6 +28,8 @@ def interpretQuestionBlock(inter):
 
 def isQuestionBlock(inter):
     '''checks to see if paramater is start of a question block'''
+    if not inter:
+        return False
     if inter[0] == "question" and inter[1] == "{":
         return True
     return False
