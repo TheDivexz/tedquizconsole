@@ -5,6 +5,4 @@ question = {
     answer = "a"
     incorrect = "b", "c", "d"
     category = "history", "politics"
-    num_asked = 0
-    num_correct = 0
 }
