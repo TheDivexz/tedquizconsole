@@ -1,9 +1,8 @@
-from objects.question import question
-from objects.category import category
 import os
 from quizscript import quizparse as parser
 from quizscript import quizinter as interpreter
-from objects import *
+from objects.question import question
+from objects.category import category
 from algorithims import questionsort as qsort
 import random
 
@@ -30,15 +29,15 @@ def main():
 
             if interpreter.isQuestionBlock(parsedLine):
                 qblocklines = []
-
+                line = f.readline()
                 while line != "}":
-                    qblocklines.append(parsedLine)
+                    qblocklines.append(line)
                     line = f.readline()
 
                 qblockinterpreted = interpreter.interpretQuestionBlock(qblocklines)
-                questions.append(qblockinterpreted)
+                questions.append(question(qblockinterpreted[0],qblockinterpreted[1],qblockinterpreted[2],qblockinterpreted[3],qblockinterpreted[4]))
             line = f.readline()
-        qsort.sort(questions)
+    qsort.sort(questions)
 
     print("Reading Save Data...")
     # CSV format is id;timesAsked;timesCorrect
@@ -65,7 +64,7 @@ def main():
                     catExists = True
                     break
             if not catExists:
-                categories.append(categories(cat))
+                categories.append(category(cat))
                 categories[len(categories)-1].addQuestion(index)
         if savedata and (saveindex <= len(savedata)-1) and (savedata[saveindex][0] == q.qid):
             q.numAsked = savedata[saveindex][1]
@@ -82,7 +81,8 @@ def main():
             if userInput == "!help":
                 print("type !c for the list of categories\nType !save to save your data and quit")
             elif userInput == "!c":
-                print(categories)
+                for c in categories:
+                    print(c.categoryTitle)
             elif userInput == "!save":
                 wr = open("savedata.csv","w")
                 for q in questions:

@@ -9,7 +9,7 @@ class category:
 
     def addQuestion(self,q):
         '''Adds a question index to the category list'''
-        self.uncategorized.append(q)
+        self.questions.append(q)
 
     def getQuestion(self):
         '''gets an Uncategorzed question then deletes it from the list'''

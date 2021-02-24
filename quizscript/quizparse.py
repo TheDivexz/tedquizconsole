@@ -32,12 +32,9 @@ def pList(p):
 
 def parseLine(p):
     '''Returns the contents of the line as [TOKEN,VALUE]'''
-    temp = plineEmpty(p.strip())
-    if (plineEmpty(p.strip()) or pComment(p.lstrip())):
-        return None
-    if pRbracket(p.strip()):
-        return ["}"]
-    s = p.split("=",1)
-    for i in s:
-        i = i.strip()
-    return s
+    str1 = ""
+    for el in p:
+        str1 += el
+    s = str1.split("=",1)
+    sl = [item.strip() for item in s]
+    return sl

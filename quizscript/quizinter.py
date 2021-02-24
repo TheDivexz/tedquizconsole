@@ -24,7 +24,7 @@ def interpretQuestionBlock(inter):
         elif temp[0] == "category":
             icategories = parser.pList(temp[1])
 
-    return question(iid,iqtext,ianswer,iincorrect,icategories)
+    return [iid,iqtext,ianswer,iincorrect,icategories]
 
 def isQuestionBlock(inter):
     '''checks to see if paramater is start of a question block'''
