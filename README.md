@@ -18,13 +18,13 @@ question = {
 ```
 each question must have a unique id
 
-text is the question itself
+**text** is the question itself
 
-answer is the correct answer to the question
+**answer** is the correct answer to the question
 
-incorrect is a list of all the incorrect options
+**incorrect** is a list of all the incorrect options
 
-category is a list of all the categories this question belongs to
+**category** is a list of all the categories this question belongs to
 
 look at the example.txt file for example questions
 
