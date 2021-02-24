@@ -30,10 +30,11 @@ def main():
             if interpreter.isQuestionBlock(parsedLine):
                 qblocklines = []
                 line = f.readline()
-                while line != "}":
+                while line != "}\n":
                     qblocklines.append(line)
                     line = f.readline()
-
+                    if line == "}":
+                        break
                 qblockinterpreted = interpreter.interpretQuestionBlock(qblocklines)
                 questions.append(question(qblockinterpreted[0],qblockinterpreted[1],qblockinterpreted[2],qblockinterpreted[3],qblockinterpreted[4]))
             line = f.readline()
@@ -66,9 +67,9 @@ def main():
             if not catExists:
                 categories.append(category(cat))
                 categories[len(categories)-1].addQuestion(index)
-        if savedata and (saveindex <= len(savedata)-1) and (savedata[saveindex][0] == q.qid):
-            q.numAsked = savedata[saveindex][1]
-            q.numCorrect = savedata[saveindex][2]
+        if savedata and (saveindex <= len(savedata)-1) and (int(savedata[saveindex][0]) == int(q.qid)):
+            q.numAsked = int(savedata[saveindex][1])
+            q.numCorrect = int(savedata[saveindex][2])
             saveindex += 1
     # No need to hog up space
     savedata = []
@@ -87,26 +88,31 @@ def main():
                 wr = open("savedata.csv","w")
                 for q in questions:
                     if q.numAsked != 0:
-                        strToWrite = str(q.qid) + ";" + str(q.numAsked) + ";" + str(q.numCorrect)
+                        strToWrite = str(q.qid) + ";" + str(q.numAsked) + ";" + str(q.numCorrect) + "\n"
+                        print(strToWrite)
                         wr.write(strToWrite)
                 wr.close()
                 break
         else:
+            # Prints out a question from the given category
             for cat in categories:
                 if cat.categoryTitle == userInput:
+                    # Break out incase there the category is empty
+                    if not cat.questions:
+                        print("There are no questions left in this category!")
+                        break
                     randqindex = cat.questions[random.randint(0,len(cat.questions)-1)]
                     questions[randqindex].numAsked += 1
                     print(questions[randqindex].questionText)
                     choices = questions[randqindex].incorrectChoices
                     choices.append(questions[randqindex].answer)
-                    l = len(choices)
-                    for _ in range(l):
+                    while choices:
                         randomABCD = choices.pop(random.randint(0,len(choices)-1))
                         if randomABCD == questions[randqindex].answer:
                             print(randomABCD, " (CORRECT ANSWER)")
                         else:
                             print(randomABCD)
-                    didGetRight = str(userInput("Did they get the question right? (y/n) "))
+                    didGetRight = input("Did they get the question right? (y/n) ")
                     if didGetRight == 'y':
                         questions[randqindex].numCorrect += 1
                     for ct in questions[randqindex].categories:

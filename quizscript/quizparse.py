@@ -25,9 +25,8 @@ def pStripBrackets(p):
 def pList(p):
     '''parses a list in .txt files for incorrect and category setters'''
     temp = re.split('" *, *"',p)
-    for t in temp:
-        t.strip('"')
-    return temp
+    temp1 = [item.strip('"') for item in temp]
+    return temp1
 
 
 def parseLine(p):
