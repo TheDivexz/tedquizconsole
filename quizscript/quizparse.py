@@ -20,13 +20,13 @@ def plineEmpty(p):
 
 def pStripBrackets(p):
     '''removes the \" at the start and end of strings'''
-    return p.strip("\"")
+    return p.strip('"')
 
 def pList(p):
     '''parses a list in .txt files for incorrect and category setters'''
     temp = re.split('" *, *"',p)
     for t in temp:
-        t.strip("\"")
+        t.strip('"')
     return temp
 
 

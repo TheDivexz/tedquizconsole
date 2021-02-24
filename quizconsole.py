@@ -99,14 +99,15 @@ def main():
                     print(questions[randqindex].questionText)
                     choices = questions[randqindex].incorrectChoices
                     choices.append(questions[randqindex].answer)
-                    for _ in range(len(choices)):
+                    l = len(choices)
+                    for _ in range(l):
                         randomABCD = choices.pop(random.randint(0,len(choices)-1))
                         if randomABCD == questions[randqindex].answer:
                             print(randomABCD, " (CORRECT ANSWER)")
                         else:
                             print(randomABCD)
-                    didGetRight = userInput("Did they get the question right? (y/n) ")
-                    if didGetRight == "y":
+                    didGetRight = str(userInput("Did they get the question right? (y/n) "))
+                    if didGetRight == 'y':
                         questions[randqindex].numCorrect += 1
                     for ct in questions[randqindex].categories:
                         for c in categories:
